@@ -1,0 +1,95 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-ink-950 text-mist-100;
+  }
+  body {
+    @apply font-sans antialiased;
+  }
+  /* Visible keyboard focus everywhere — never suppressed for aesthetics */
+  :focus-visible {
+    @apply outline-none ring-2 ring-marquee-400 ring-offset-2 ring-offset-ink-950 rounded-sm;
+  }
+  ::selection {
+    @apply bg-marquee-500/30 text-mist-100;
+  }
+}
+
+@layer components {
+  /* ---------- Skeleton shimmer primitives ---------- */
+  .skeleton {
+    @apply relative overflow-hidden bg-ink-800 bg-shimmer bg-[length:200%_100%] animate-shimmer;
+  }
+
+  .skeleton-poster {
+    @apply skeleton rounded-card aspect-[2/3] w-full;
+  }
+
+  .skeleton-backdrop {
+    @apply skeleton rounded-card aspect-video w-full;
+  }
+
+  .skeleton-line {
+    @apply skeleton h-3 rounded-full;
+  }
+
+  .skeleton-line-lg {
+    @apply skeleton h-5 rounded-full;
+  }
+
+  .skeleton-badge {
+    @apply skeleton h-5 w-12 rounded-pill;
+  }
+
+  .skeleton-avatar {
+    @apply skeleton h-10 w-10 rounded-full;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton {
+      animation: none;
+      @apply bg-ink-700;
+    }
+  }
+
+  /* ---------- Shared surfaces ---------- */
+  .surface-card {
+    @apply bg-ink-800 rounded-card shadow-card transition-shadow duration-200;
+  }
+
+  .surface-card:hover {
+    @apply shadow-card-hover;
+  }
+
+  .glass {
+    @apply bg-ink-900/70 backdrop-blur-md border border-ink-600/60;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-pill px-2 py-0.5 text-[11px] font-semibold tracking-wide font-mono;
+  }
+}
+
+
+/* Custom Thin Dark Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px; /* স্ক্রলবারের থিকনেস/মোটা কমানো হয়েছে */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #0f172a; /* ব্যাকগ্রাউন্ড ডার্ক কালার */
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #374151; /* স্ক্রলবারের আসল ডার্ক কালার */
+  border-radius: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #4b5563; /* হভার করলে সামান্য লাইট হবে */
+}
